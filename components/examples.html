@@ -3,7 +3,7 @@ _
 
 <style>
     .samples {
-        background-color: #9daab5;
+        padding: 4em 25%;
     }
 
     .samples div[example] {
@@ -34,6 +34,14 @@ _
 </style>
 
 <section class="samples">
+    <wc-codemirror mode="clojure">
+        <script type="wc-content">
+            (->> [1 2 3 4 5]
+              (map inc)
+              (filter even?)
+              (apply +))    
+        </script>
+    </wc-codemirror>
     <div example="1">
         <div>
             <pre><code class="language-clojure-repl">
@@ -108,7 +116,6 @@ user=> (->> [1 2 3 4 5]
 
     examples.forEach((x, i) => {
         x.innerHTML = `<button class="prev">&lsaquo;</button>` + x.innerHTML + `<button class="next">&rsaquo;</button>`;
-        x.classList.add("narrow");
     });
 
     hideAll(examples, 0);

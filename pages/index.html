@@ -42,6 +42,16 @@ title:Adopt Clojure
         border-right: 2px solid grey;
         padding-right: 1em;
     }
+    
+    footer {
+        background-color: #292d2e;
+        color: #838383;
+        padding: 4em 20%;
+        display: grid;
+        grid-template-columns: 30% 30% 30%;
+        gap: 2em;
+        font-weight: 500;
+    }
 </style>
 
 <div>
@@ -68,6 +78,7 @@ title:Adopt Clojure
         </div>
 
     </div>
+    @{examples}
     <style>
         div.uses {
             color: white;
@@ -148,6 +159,8 @@ title:Adopt Clojure
             </div>
         </div>
     </div>
+    
+
     <div class="production">
         <h1>Who's using Clojure?</h1>
         <div>
@@ -176,4 +189,36 @@ title:Adopt Clojure
             </div>
         </div>
     </div>
+    <footer>
+        <div style="display: flex; flex-direction: column;">
+            <h3>Community</h3>
+            <div style="display: flex; gap: .5em">
+                <a href="https://twitter.com/cognitect"><img height="30" src="https://www.freepnglogos.com/uploads/twitter-logo-png/twitter-logo-vector-png-clipart-1.png"/></a>
+                <a href="https://www.youtube.com/user/ClojureTV/videos"><img height="30" src="http://assets.stickpng.com/thumbs/580b57fcd9996e24bc43c545.png"/></a>
+                <a href="http://clojurians.net/"><img height="30" src="https://cdn.freebiesupply.com/logos/large/2x/slack-icon.svg"/></a>
+                <a href="https://discord.gg/discljord"><img height="30" src="https://cdn.freebiesupply.com/logos/thumbs/2x/discord-logo.png"/></a>
+                <a href="https://github.com/clojure/"><img height="30" src="https://cdn0.iconfinder.com/data/icons/shift-logotypes/32/Github-512.png"/></a>
+            </div>
+            <a>Resources</a>
+            <a>Contributing</a>
+            <a>Companies</a>
+        </div> 
+        <div style="display: flex; flex-direction: column;">
+            <h3>Documentation</h3>
+            <a>Learning</a>
+            <a>Reference</a>
+            <a>Cheatsheet</a>
+            <a>API</a>
+            <a>Guides</a>
+            <a>Libraries & Tools</a>
+        </div> 
+        <div style="display: flex; flex-direction: column;">
+            <h3>Updates</h3>
+            <a>News</a>
+            <a>Events</a>
+            <h3>Code</h3>
+            <a>Releases</a>
+            <a>Source</a>
+        </div> 
+    </footer>
 </div>

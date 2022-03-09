@@ -52,12 +52,23 @@
             selector: '.clj',
         };
     </script>
+    
+    <script type="module" src="https://cdn.jsdelivr.net/gh/vanillawc/wc-codemirror@1/index.js"></script> 
+    <script type="module" src="https://cdn.jsdelivr.net/gh/vanillawc/wc-codemirror@1/mode/clojure/clojure.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/scittle@0.1.2/dist/scittle.js" type="application/javascript"></script>
 </head>
 
 <body
     style="width: 100%; height: 100%; overflow-x: hidden; overflow-y: scroll; margin: 0; padding: 0; background-color: #FFFFFF;">
     @{content}
-    <script>hljs.highlightAll();</script>
+    <script>
+    let scripts = document.querySelectorAll("wc-codemirror");
+    scripts.forEach(ex => {
+    console.log(ex);
+    ex.insertAdjacentHTML('afterend', `<button onclick="scittle.core.eval_string(
+        ${ex.textContent}))">Run it!</button>`)
+    });
+    </script>
 </body>
 
 </html>
