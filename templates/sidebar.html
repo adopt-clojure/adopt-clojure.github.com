@@ -1,0 +1,42 @@
+<style>
+    .tags h1 {
+        margin: 0.8rem
+    }
+</style>
+
+<div style="display:flex; flex-direction: column;">
+    <div style="background: linear-gradient(90deg, #0F2242 0%, #2452A1 100%); color: white">
+        <div style="display: flex; justify-content: space-between; padding: 1em">
+            <img src="https://clojure.org/images/clojure-logo-120b.png" height="60" />
+            <div style="display: flex; justify-content: space-between;">
+                @{sidebar-item Install #}
+                @{sidebar-item Learning #}
+                @{sidebar-item Documentation https://clojuredocs.org}
+                @{sidebar-item Packages https://clojuredocs.org}
+                @{sidebar-item Community #}
+                @{sidebar-item News #}
+                @{search}
+            </div>
+        </div>
+        <section class="heading" style="color: white; display: grid; align-items: center; padding: 0 20% 5em 20%; grid-template-columns: 40% 60%;">
+            <div>
+                <div style="display:flex; align-items: center;">
+                    <h1 style="font-size: 4em; margin: 1rem 0">Clo<i>j</i>ure</h1>
+                </div>
+                <ul class="tags">
+                    <li><h1>Open-source</h1></li>
+                    <li><h1>Simple and easy to learn</h1></li>
+                    <li><h1>Fun</h1></li>
+                </ul>
+            </div>
+            <div>
+                <h1 style="text-align: right;">
+                    A robust and practical language built to deal with the increasing complexity of today’s software.
+                </h1>
+            </div>
+        </section>
+    </div>
+    <div class="content" style="width: 100%;">
+        @{content}
+    </div>
+</div>

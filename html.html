@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>@{title}</title>
+
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: #191919;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+            color: inherit;
+        }
+
+        a:visited {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        pre {
+            margin: 0
+        }
+    </style>
+    
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet"> 
+
+    <!-- Syntax highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/a11y-light.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/languages/clojure.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/languages/clojure-repl.min.js"></script>
+
+    <!-- Interactive Code blocks -->
+    <link rel="stylesheet" type="text/css" href="https://storage.googleapis.com/app.klipse.tech/css/codemirror.css">
+    <script>
+        window.klipse_settings = {
+            codemirror_options_in: {
+                autoCloseBrackets: true,
+                indentUnit: 2,
+            },
+            selector: '.clj',
+        };
+    </script>
+</head>
+
+<body
+    style="width: 100%; height: 100%; overflow-x: hidden; overflow-y: scroll; margin: 0; padding: 0; background-color: #FFFFFF;">
+    @{content}
+    <script>hljs.highlightAll();</script>
+</body>
+
+</html>

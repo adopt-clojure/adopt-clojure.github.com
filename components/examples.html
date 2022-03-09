@@ -1,0 +1,131 @@
+_
+---
+
+<style>
+    .samples {
+        background-color: #9daab5;
+    }
+
+    .samples div[example] {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .samples div[example] > button {
+        width: 1em;
+        height: 100%;
+        border: none;
+        font-size: 2em;
+        background-color: inherit;
+    }
+    
+    .samples div[example] > div {
+        width: 50%;
+    }
+    
+    .samples div[example] > div:last-child {
+        padding: 10px;
+        background-color: #90B4FE;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+</style>
+
+<section class="samples">
+    <div example="1">
+        <div>
+            <pre><code class="language-clojure-repl">
+user=> (->> [1 2 3 4 5]
+         (map inc)
+         (filter even?)
+         (apply +))
+12
+            </code></pre>
+        </div>
+        <div>
+            <p>Create simple pipelines of data to clearly express any transformation.</p>
+        </div>
+    </div>
+    <div example="2">
+        <div>
+            <pre><code class="language-clojure-repl">
+user=> (def x (atom 0))
+user=> (repeatedly 10
+  (fn [] (future (swap! x inc))))
+user=> @x
+10
+            </code></pre>
+        </div>
+        <div>
+            <p>Write multi-threaded code with thread-safe wrappers so values are always synchronized.</p>
+        </div>
+    </div>
+    <div example="3">
+        <div>
+            <pre><code class="language-clojure-repl">
+user=> (defmacro unless [condition & body]
+         (list 'if condition 
+               (cons 'do body)))
+user=> (unless false (println "false!"))
+false!
+            </code></pre>
+        </div>
+        <div>
+            <p>Define simple macros to gain access to a whole new layer of abstraction.</p>
+        </div>
+    </div>
+    <div example="4">
+        <div>
+            <pre><code class="language-clojure-repl">
+user=> (->> [1 2 3 4 5]
+         (map inc)
+         (filter even?)
+         (apply +))
+            </code></pre>
+        </div>
+        <div>
+            <p>Create simple pipelines of data to clearly express any transformation of data.</p>
+        </div>
+    </div>
+</section>
+
+<script>
+    function hideAll(elements, except) {
+        elements.forEach((x, i) => {
+            if (i === except) {
+                x.style.display = "flex";
+            } 
+            else {
+                x.style.display = "none";
+            }
+        });
+    }
+
+    let currentExample = 0;
+    const examples = Array.from(document.querySelectorAll("div[example]"));
+
+    examples.forEach((x, i) => {
+        x.innerHTML = `<button class="prev">&lsaquo;</button>` + x.innerHTML + `<button class="next">&rsaquo;</button>`;
+        x.classList.add("narrow");
+    });
+
+    hideAll(examples, 0);
+
+    document.querySelectorAll(".prev").forEach(el => {
+        el.addEventListener("click", (e) => {
+            console.log(currentExample > 0);
+            if (currentExample > 0)
+                hideAll(examples, --currentExample);
+        });
+    });
+
+    document.querySelectorAll(".next").forEach(el => {
+        el.addEventListener("click", (e) => {
+            console.log(currentExample < examples.length-1)
+            if (currentExample < examples.length-1)
+                hideAll(examples, ++currentExample);
+        });
+    });
+</script>

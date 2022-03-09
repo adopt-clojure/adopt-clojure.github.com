@@ -1,0 +1,179 @@
+template:sidebar
+title:Adopt Clojure
+---
+
+<style>
+    .narrow {
+        width: 60%;
+        margin: auto;
+    }
+
+    .uses {
+        color: white
+    }
+
+    .production {
+        padding: 4em 20%;
+        display: flex;
+        flex-direction: column;
+        gap: 2em;
+    }
+
+    .production>div {
+        display: flex;
+        gap: 2em;
+        align-items: center;
+    }
+
+    .production>div:nth-child(even) {
+        flex-direction: row;
+    }
+    
+    .production>div:nth-child(even)>div {
+        border-left: 2px solid grey;
+        padding-left: 1em;
+    }
+
+    .production>div:nth-child(odd) {
+        flex-direction: row-reverse;
+        text-align: right;
+    }
+    .production>div:nth-child(odd)>div {
+        border-right: 2px solid grey;
+        padding-right: 1em;
+    }
+</style>
+
+<div>
+    <div style="padding: 5em 20%;">
+        <h1 style="margin-top: 0;">Why Clojure?</h1>
+        <div style="display: grid; grid-template-columns: 32% 1% 32% 1% 32%; gap: 1em;">
+            <div>
+                <h3>Reliable</h3>
+                <p>Clojure's immutable data structures and thread-safe mutation allow you to write robust, scalable
+                    code. Clojure's contract system promotes natural code growth without maintenance pains.</p>
+            </div>
+            <hr style="width: 0; height: 100%;" />
+            <div>
+                <h3>Pragmatic</h3>
+                <p>Clojure aims to get stuff done. Eliminate boilerplate, take advantage of libraries, develop quickly
+                    from the REPL. Clojure gets out of your way so you can get stuff done.</p>
+            </div>
+            <hr style="width: 0; height: 100%;" />
+            <div>
+                <h3>Simple</h3>
+                <p>Clojure is a very simple language. Follow it's philosophy of treating everything as maps and vectors,
+                    and profit from countless functions to work on them.</p>
+            </div>
+        </div>
+
+    </div>
+    <style>
+        div.uses {
+            color: white;
+        }
+
+        .uses>div>div {
+            background-color: white;
+            color: black;
+            padding: 1em;
+            display: grid;
+            grid-template-rows: 20% 55% 20%;
+        }
+
+        .heading {
+            display: flex;
+            align-items: center;
+            gap: 1em;
+        }
+
+        .packages {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+    </style>
+    <div class="uses" style="padding: 6em 20%; background: #9DAAB5;">
+        <h1>Use Clojure For...</h1>
+        <div style="display: grid; grid-template-columns: 32% 32% 32%; gap: 1em;">
+            <div style="border-bottom: 4px solid #0e73d3">
+                <div class="heading">
+                    <img height="30" src="https://cdn-icons-png.flaticon.com/512/1336/1336494.png">
+                    <h3>Web Applications</h3>
+                </div>
+                <p>Use Clojure in the backend and ClojureScript in the front to build highly performant and reliable
+                    web applications, taking advantage of first-in-class tools and technologies.</p>
+                <div class="packages">
+                    <strong>Using...</strong>
+                    @{package reagent https://github.com/reagent-project/reagent}
+                    @{package re-frame https://github.com/Day8/re-frame}
+                    @{package shadow-cljs https://github.com/thheller/shadow-cljs}
+                    @{package compojure https://github.com/weavejester/compojure}
+                    @{package ring https://github.com/ring-clojure/ring}
+                </div>
+            </div>
+            <div style="border-bottom: 4px solid #7e64b4">
+                <div class="heading">
+                    <img height="30" src="https://static.thenounproject.com/png/2245695-200.png">
+                    <h3>Data Science</h3>
+                </div>
+                <p>Clojure's excellent data structures and sequence interface make it a natural choice for data science.
+                    Clojure allows you to easily model your domain data and work with it in a seamless interactive
+                    environment.</p>
+                <div class="packages">
+                    <strong>Using...</strong>
+                    @{package incanter https://github.com/incanter/incanter}
+                    @{package quil http://quil.info/}
+                    @{package neanderthal https://neanderthal.uncomplicate.org/ #}
+                    @{package specter https://github.com/redplanetlabs/specter #}
+                </div>
+            </div>
+            <div style="border-bottom: 4px solid #ef5ba1">
+                <div class="heading">
+                    <img height="30" src="https://static.thenounproject.com/png/133029-200.png">
+                    <h3>Command-Line Interfaces</h3>
+                </div>
+                <p>Taking advantage of GraalVM, Clojure can be compiled to native binaries in just a couple simple
+                    steps, allowing for 0 startup time applications. Quickly develop your next command line tool using
+                    Clojure.</p>
+                <div class="packages">
+                    <strong>Using...</strong>
+                    @{package babashka https://github.com/borkdude/babashka}
+                    @{package cli-matic https://github.com/l3nz/cli-matic}
+                    @{package clj-easy https://github.com/clj-easy/graal-build-time}
+                    @{package tools.cli https://github.com/clojure/tools.cli}
+                    @{package pretty https://github.com/AvisoNovate/pretty}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="production">
+        <h1>Who's using Clojure?</h1>
+        <div>
+            <img width="120"
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Puppet_transparent_logo.svg/1200px-Puppet_transparent_logo.svg.png" />
+            <div>
+                <i>“Clojure is a functional programming language from top to bottom. This means that code written in
+                    Clojure is very modular, composable, reusable and easy to reason about.”</i>
+                <p>Chris Price, Software Engineer</p>
+            </div>
+        </div>
+        <div>
+            <img width="120"
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Walmart_logo.svg/2560px-Walmart_logo.svg.png" />
+            <div>
+                <i>“Our Clojure system just handled its first Walmart black Friday and came out without a scratch.”</i>
+                <p>Anthony Marcar, Senior Architect</p>
+            </div>
+        </div>
+        <div>
+            <img width="120" src="https://www.thoughtworks.com/etc.clientlibs/thoughtworks/clientlibs/clientlib-site/resources/images/thoughtworks-logo.svg" />
+            <div>
+                <i>“We discussed the existing Clojure community, the maturity of the language itself and the momentum we
+                    saw in the industry. Companies are seeing speed to market deliveries ... based on Clojure.”</i>
+                <p>Dave Elliman, Head of Technology</p>
+            </div>
+        </div>
+    </div>
+</div>
