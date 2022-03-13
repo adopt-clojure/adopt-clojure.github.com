@@ -10,6 +10,11 @@
     (->> (into [new-root] path)
          (str/join "/"))))
 
+(defn zipmap-extra [a b]
+  (let [c (count a)
+        mapping (zipmap (take c a) (take c b))]
+    (assoc mapping (last a) (drop (dec c) b))))
+
 (defn get-template [template-name]
   (slurp (str "templates/" template-name ".html")))
 
@@ -29,21 +34,34 @@
     [args body]))
 
 (defn expand-components [file]
-  (let [components (re-seq #"\@\{.*\}" file)
-        expanded
-        (reduce (fn [doc comp]
-                  (let [[comp-name & args] (-> (str/replace comp #"\@|\{|\}" "")
-                                               (str/split #" "))
-                        [comp-args comp-body] (parse-component comp-name)]
-                    (->> (zipmap comp-args args)
-                         (reduce-kv
-                          #(str/replace % (re-pattern (str "\\@\\{" %2 "\\}")) %3)
-                          comp-body)
-                         (str/replace doc comp))))
-                file components)]
-    (if (re-find #"\@\{.*\}" expanded)
-      (expand-components expanded)
-      expanded)))
+  (loop [char (first file)
+         lookahead (second file)
+         after (drop 2 file)
+         expanded []]
+    (cond
+      (empty? after) (apply str (into expanded [char lookahead]))
+      (= (str char lookahead) "@{") 
+      (let [comp-call (take-while #(not= % \}) after)
+            [comp-name & comp-vals] (->> (partition-by #(= % \space) comp-call)
+                                         (filter #(not= [\space] %))
+                                         (map #(str/join "" %)))
+            [comp-args comp-body] (parse-component comp-name)
+            replaced (->> (zipmap-extra comp-args comp-vals)
+                          (reduce-kv 
+                           (fn [a k v]
+                             (let [replacement (if (seq? v)
+                                                 (if (some-> (first v) (str/starts-with? " "))
+                                                   (let [indent (re-pattern (first v))]
+                                                     (->> (map #(str/replace-first % indent "") v)
+                                                          (str/join " ")))
+                                                   (str/join " " v))
+                                                 (str/trim-newline v))]
+                               (str/replace a (re-pattern (str "\\@\\{" k "\\}")) replacement)))
+                           comp-body)
+                          (expand-components))
+            [char lookahead & after] (drop (inc (count comp-call)) after)]
+        (recur char lookahead after (conj expanded replaced)))
+      :else (recur lookahead (first after) (rest after) (conj expanded char)))))
 
 (defn apply-template [template file]
   (str/replace template "@{content}" (str/join "\n" file)))
@@ -57,7 +75,7 @@
                 (expand-components)
                 (make-html opts))]
     (spit name doc)))
-  
+
 (let [pages "./pages"
       docs "./docs"]
   (fs/walk-file-tree pages

@@ -34,14 +34,11 @@ _
 </style>
 
 <section class="samples">
-    <wc-codemirror mode="clojure">
-        <script type="wc-content">
-            (->> [1 2 3 4 5]
-              (map inc)
-              (filter even?)
-              (apply +))    
-        </script>
-    </wc-codemirror>
+    @{code-example threading
+        (->> [1 2 3 4 5]
+            (map inc)
+            (filter even?)
+            (apply +))}
     <div example="1">
         <div>
             <pre><code class="language-clojure-repl">
@@ -130,7 +127,7 @@ user=> (->> [1 2 3 4 5]
 
     document.querySelectorAll(".next").forEach(el => {
         el.addEventListener("click", (e) => {
-            console.log(currentExample < examples.length-1)
+            console.log(currentExample < examples.length-1);
             if (currentExample < examples.length-1)
                 hideAll(examples, ++currentExample);
         });

@@ -1,0 +1,6 @@
+goog.provide('adopt_clojure.components.sidebar_item');
+adopt_clojure.components.sidebar_item.sidebar_item = (function adopt_clojure$components$sidebar_item$sidebar_item(name,link){
+return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"style","style",-496642736),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"padding","padding",1660304693),"1em"], null),new cljs.core.Keyword(null,"class","class",-2030961996),"headling-link"], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"a","a",-2123407586),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"href","href",-793805698),link,new cljs.core.Keyword(null,"style","style",-496642736),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"color","color",1011675173),new cljs.core.Symbol(null,"white","white",1156532909,null),new cljs.core.Keyword(null,"text-decoration","text-decoration",1836813207),new cljs.core.Symbol(null,"none","none",-1320967291,null)], null)], null),name], null)], null);
+});
+
+//# sourceMappingURL=adopt_clojure.components.sidebar_item.js.map

@@ -4,31 +4,6 @@
 <head>
     <title>@{title}</title>
 
-    <style>
-        body {
-            font-family: 'Open Sans', sans-serif;
-            color: #191919;
-        }
-        
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-        
-        a:hover {
-            text-decoration: underline;
-            color: inherit;
-        }
-
-        a:visited {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        pre {
-            margin: 0
-        }
-    </style>
     
     <!-- Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -43,32 +18,32 @@
 
     <!-- Interactive Code blocks -->
     <link rel="stylesheet" type="text/css" href="https://storage.googleapis.com/app.klipse.tech/css/codemirror.css">
-    <script>
-        window.klipse_settings = {
-            codemirror_options_in: {
-                autoCloseBrackets: true,
-                indentUnit: 2,
-            },
-            selector: '.clj',
-        };
-    </script>
     
     <script type="module" src="https://cdn.jsdelivr.net/gh/vanillawc/wc-codemirror@1/index.js"></script> 
     <script type="module" src="https://cdn.jsdelivr.net/gh/vanillawc/wc-codemirror@1/mode/clojure/clojure.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/scittle@0.1.2/dist/scittle.js" type="application/javascript"></script>
+    <script>
+        function run_block(id) {
+            NodeList.prototype.toArray = function () { return Array.from(this) };
+            let codeBlock = document.querySelectorAll(`wc-codemirror.code-${id} pre.CodeMirror-line`)
+                                    .toArray()
+                                    .map(x => x.innerText)
+                                    .join("\n");
+            codeBlock = `(with-out-str (println (do ${codeBlock})))`; 
+            console.log(codeBlock)
+            
+            const val = scittle.core.eval_string(`(do ${codeBlock})`);
+            console.log(val);
+                    
+            const solutionBlock = document.querySelector(`wc-codemirror.sol-${id}`);
+            solutionBlock.value = val;
+        }
+    </script>
 </head>
 
 <body
     style="width: 100%; height: 100%; overflow-x: hidden; overflow-y: scroll; margin: 0; padding: 0; background-color: #FFFFFF;">
     @{content}
-    <script>
-    let scripts = document.querySelectorAll("wc-codemirror");
-    scripts.forEach(ex => {
-    console.log(ex);
-    ex.insertAdjacentHTML('afterend', `<button onclick="scittle.core.eval_string(
-        ${ex.textContent}))">Run it!</button>`)
-    });
-    </script>
 </body>
 
 </html>

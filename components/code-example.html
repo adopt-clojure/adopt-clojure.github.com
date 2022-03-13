@@ -1,0 +1,13 @@
+id code
+---
+
+<div>
+    <wc-codemirror class="code-@{id}" mode="clojure">
+        <script type="wc-content">@{code}</script>
+    </wc-codemirror>
+    <wc-codemirror readonly class="sol-@{id}" mode="clojure"></wc-codemirror>
+
+    <button onclick="run_block('@{id}')">
+        Run It!
+    </button>
+</div>

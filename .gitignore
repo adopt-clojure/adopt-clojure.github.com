@@ -1,2 +1,6 @@
 .lsp*
 .clj-kondo
+
+node_modules
+package-lock.json
+*.code-workspace
